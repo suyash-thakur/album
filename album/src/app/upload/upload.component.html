@@ -1,0 +1,15 @@
+<h1>Upload Image</h1>
+<form>
+  <input type="text" [(ngModel)]="title" placeholder="Title" name="title"> <br>
+  <input type="number" [(ngModel)]="cost" placeholder="Number" name="cost"> <br>
+  <input type="description" [(ngModel)]="description" placeholder="Description" name="description"> <br>
+  <input type="file" #filePicker (change)="onSelectFile($event)" name="file"> <br>
+  <button (click)="onRemovePicture()">Clear Image</button> <br> <br>
+  <input type="submit" (click)="uploadAlbum()">
+
+</form>
+<div style="display: flex; gap:25px">
+  <div *ngFor="let item of imagesUrl">
+    <img [src]="item" style="max-width: 200px">
+  </div>
+</div>

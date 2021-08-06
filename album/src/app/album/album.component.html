@@ -1,0 +1,34 @@
+<div id="container" *ngIf="isLoaded">
+  <header>
+    Filmstrip View
+  </header>
+  <div id="main" role="main">
+    <div id="large">
+      <div class="group">
+        <img alt="Large Image" width="430" height="360" [src]="albumItems[selectedIndex].largeImg" />
+        <div class="details">
+          <p><strong>Title</strong> {{albumItems[selectedIndex].title}}</p>
+          <p><strong>Description</strong> {{albumItems[selectedIndex].description}}</p>
+          <p><strong>Cost</strong> ${{albumItems[selectedIndex].cost}}</p>
+          <p><strong>ID #</strong> {{albumItems[selectedIndex]._id}}</p>
+          <p><strong>Thumbnail File</strong> {{ albumItems[selectedIndex].title.split('-')[1] }}-m.jpg</p>
+          <p><strong>Large Image File</strong> {{ albumItems[selectedIndex].title.split('-')[1] }}-b.jpg</p>
+        </div>
+      </div>
+    </div>
+    <div class="thumbnails">
+      <div class="group">
+        <a title="7111" *ngFor="let item of albumItems; let i = index;" (click)="selectImage(i)"
+          [ngClass]="{active: i === selectedIndex}">
+          <img alt="7111-m" width="145" height="121" [src]="item.thumbnail" />
+          <span>{{ item.title.split('-')[1] }}</span>
+        </a>
+        <a class="previous" title="Previous" (click)="clickBack()">Previous</a>
+        <a class="next" title="Next" (click)="clickNext()">Next</a>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <a href="instructions.pdf">Download PDF Instructions</a>
+  </footer>
+</div>
